@@ -3,36 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mintlify</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Mintlify Clone</title>
+  
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-secondary: #f9fafb;
       --text-main: #0f172a;
       --text-muted: #475569;
-      --text-light: #94a3b8;
       --primary-mint: #00ff94;
-      --primary-mint-dark: #00e082;
+      --primary-black: #0f172a;
       --border-light: #e2e8f0;
-      --border-hover: #cbd5e1;
       --font-main: 'Inter', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --max-width: 1200px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: var(--bg-page);
-      color: var(--text-main);
       font-family: var(--font-main);
+      color: var(--text-main);
+      background-color: var(--bg-page);
       overflow-x: hidden;
     }
 
-    ul { list-style: none; }
     a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
 
+    
     .navbar {
       position: fixed;
       top: 0;
@@ -43,14 +39,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(255, 255, 255, 0.8);
+   
+      background: transparent;
       backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
       z-index: 1000;
-      transition: all 0.2s ease;
     }
 
-    .nav-logo img { height: 28px; display: block; }
+    .nav-logo img { height: 28px; }
 
     .nav-links ul {
       display: flex;
@@ -58,9 +54,9 @@
     }
 
     .nav-links a {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      color: var(--text-muted);
+      color: white;
       transition: color 0.2s;
     }
 
@@ -68,38 +64,45 @@
 
     .nav-buttons { display: flex; gap: 12px; }
 
-    .nav-buttons button {
-      padding: 6px 16px;
+    .btn {
+      padding: 6px 14px;
       border-radius: 99px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       font-family: var(--font-main);
+      background-color: #fff;
+      color:black
+
     }
 
-    .nav-buttons-white {
-      background-color: transparent;
-      color: var(--text-main);
-      border: 1px solid transparent;
-    }
-    .nav-buttons-white:hover { background-color: var(--bg-secondary); }
-
-    .nav-buttons-coa {
-      background-color: var(--text-main);
+    .btn-ghost {
+      background: transparent;
+      ;
+      border: none;
+      border: 1px solid white;
       color: white;
-      border: 1px solid var(--text-main);
+    }
+    .btn-ghost:hover { background-color: #f1f5f9; }
+
+    .btn-primary {
+      background-color: white;
+      color:black;
+      border: 1px solid black;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
+   
     .hero {
       position: relative;
       width: 100%;
+      
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 140px; 
-      overflow: hidden;
-      text-align: center;
+      padding-top: 180px; 
+      overflow: hidden; 
     }
 
     .hero-bg {
@@ -111,77 +114,83 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
+      pointer-events: none;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 900px;
+      text-align: center;
+      z-index: 1;
+      width: 100%;
       padding: 0 24px;
-      margin-bottom: 60px;
     }
 
+   
     .hero-link {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       background-color: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(8px);
       border: 1px solid var(--border-light);
-      padding: 4px 12px 4px 6px;
+      padding: 4px 12px 4px 5px;
       border-radius: 99px;
       font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
       margin-bottom: 24px;
       transition: all 0.2s;
+      
     }
 
     .hero-link:hover {
-      background-color: rgba(255, 255, 255, 0.8);
-      border-color: var(--border-hover);
+      background-color: rgba(255, 255, 255, 0.6);
+      border-color: #cbd5e1;
     }
 
     .hero-link-new {
       background-color: var(--primary-mint);
-      color: #020408;
-      padding: 2px 8px;
-      border-radius: 99px;
-      font-size: 10px;
+      color: black;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      line-height: 1.2;
     }
 
+    .hero-link-content { color: white; font-weight: 500; margin: 0; }
+    .hero-arrow-link { width: 12px; height: 12px; opacity: 0.6; }
+
+    
     .hero h1 {
-      font-size: 72px;
-      font-weight: 700;
+      font-size: 3.2rem;
       line-height: 1.1;
+      font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      color: var(--text-main);
+      color: white;
+      margin: 0 0 24px 0;
+      max-width: 900px;
     }
 
     .hero-subtext {
       font-size: 20px;
       line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 580px;
-      margin-bottom: 32px;
+      color: white;
+      max-width: 550px;
+      margin: 0 0 40px 0;
     }
 
+    /* Email Form */
     .hero-form {
       display: flex;
       padding: 4px;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
       border: 1px solid var(--border-light);
       border-radius: 99px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
       width: 100%;
       max-width: 360px;
+      margin-bottom: 80px;
     }
 
     .email-input {
@@ -189,151 +198,184 @@
       border: none;
       background: transparent;
       padding: 0 16px;
-      font-size: 15px;
       outline: none;
+      font-size: 15px;
       font-family: var(--font-main);
+      color: var(--text-main);
     }
 
-    .form-button {
-      background-color: var(--text-main);
-      color: white;
+    .form-btn {
+      background-color: white;
+      color:var(--primary-black);
       border: none;
       padding: 8px 20px;
       border-radius: 99px;
       font-weight: 600;
       font-size: 14px;
-      cursor: pointer;
       font-family: var(--font-main);
+      cursor: pointer;
     }
 
+    
     .hero-browser-container {
       width: 100%;
-      max-width: 1080px;
-      border: 1px solid var(--border-light);
-      border-bottom: none;
-      border-radius: 24px 24px 0 0;
-      overflow: hidden;
-      box-shadow: 0 -20px 40px -20px rgba(0,0,0,0.05);
+      max-width: 1080px; 
+      
+      
       background: #fff;
+      border: 1px solid var(--border-light);
+      border-bottom: none; 
+      border-radius: 24px 24px 0 0; 
+      
+     
+      box-shadow: 0 -20px 40px -20px rgba(0,0,0,0.05);
+      
+      
+      overflow: hidden; 
+      display: flex;    
     }
 
     .hero-browser-img {
       width: 100%;
+      height: auto;
       display: block;
     }
-
-    .logos-section {
-      padding: 60px 24px;
+    .features {
       display: flex;
       justify-content: center;
-      background: var(--bg-page);
+      align-items: center;
+      padding: 60px 0;
     }
 
-    .logos-grid {
+  .feature-logo{
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
+      gap: 54px;
+      padding: 40px 0;
+      justify-content: center;
       align-items: center;
-      opacity: 0.8;
+      width: 50%;
     }
+  .grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 
-    .bento-section {
-      padding: 80px 24px;
-      background: var(--bg-page);
-      display: flex;
-      justify-content: center;
-    }
+  }
 
-    .bento-container {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+/* --- Bento Grid Section --- */
+.bento-section {
+  padding: 80px 24px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-page);
+}
 
-    .bento-row {
-      display: flex;
-      gap: 24px;
-      width: 100%;
-    }
+.bento-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-    .bento-card {
-      background: #fff;
-      border: 1px solid var(--border-light);
-      border-radius: 24px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+/* Top row with 2 columns */
+.bento-row {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
 
-    .bento-text {
-      padding: 32px 32px 0 32px;
-      margin-bottom: 24px;
-    }
+.bento-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Makes cards even width in the row */
+}
 
-    .bento-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      color: #0c8c5e;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-      display: block;
-    }
+/* Text styling inside cards */
+.bento-text {
+  padding: 32px 32px 0 32px;
+  margin-bottom: 24px;
+  text-align: left;
+}
 
-    .bento-card h3 {
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
+.bento-text.centered {
+  text-align: center;
+  margin: 0 auto 32px auto;
+  max-width: 600px;
+}
 
-    .bento-card p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text-muted);
-    }
+.bento-label {
+  font-family: monospace; 
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-mint-dark, #00e082); 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: block;
+}
 
-    .bento-media {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      overflow: hidden;
-      background: #ffffff;
-      padding-top: 20px;
-    }
+.bento-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
 
-    .bento-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.bento-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
 
-    .bento-video-full {
-      width: 100%;
-      height: auto;
-      border-top: 1px solid var(--border-light);
-    }
 
-    @media (max-width: 1024px) {
-      .bento-row {
-        flex-direction: column;
-      }
-      
-      .hero h1 { font-size: 48px; }
+.bento-media {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; 
+  overflow: hidden;
+  background: #f9fafb; 
+  padding-top: 20px;
+  border-top: 1px solid transparent; 
+}
+
+.bento-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0; 
+}
+
+.bento-video-full {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+@media (max-width: 1024px) {
+  .bento-row {
+    flex-direction: column;
+  }
+}
+
+
+    @media (max-width: 768px) {
+      .hero { padding-top: 140px; }
+      .hero h1 { font-size: 40px; }
       .nav-links, .nav-buttons-white { display: none; }
-      
-      .logos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
     }
+
+    
   </style>
 </head>
 <body>
@@ -352,8 +394,8 @@
       </ul>
     </div>
     <div class="nav-buttons">
-      <button class="nav-buttons-white">Contact Sales</button>
-      <button class="nav-buttons-coa">Start for free</button>
+      <button class="btn btn-ghost">Contact Sales</button>
+      <button class="btn btn-primary">Start for free</button>
     </div>
   </nav>
 
@@ -363,7 +405,7 @@
     <div class="hero-content">
       <a href="#" class="hero-link">
         <span class="hero-link-new">New</span>
-        <p>Self-updating docs with agent suggestions</p>
+        <p class="hero-link-content">Self-updating docs with agent suggestions</p>
         <img class="hero-arrow-link" src="src/hero-link-arrow.svg" alt="">
       </a>
 
@@ -375,68 +417,73 @@
 
       <form class="hero-form">
         <input type="email" class="email-input" placeholder="Email address">
-        <button class="form-button">Start now</button>
+        <button class="form-btn">Start now</button>
       </form>
     </div>
 
     <div class="hero-browser-container">
       <img src="src/hero-image-light.svg" alt="Platform Dashboard" class="hero-browser-img">
     </div>
-  </section>
 
-  <section class="logos-section">
-    <div class="logos-grid">
-      <img src="src/anthropic-1.svg" alt="Anthropic">
-      <img src="src/coinbase-1.svg" alt="Coinbase">
-      <img src="src/microsoft.svg" alt="Microsoft">
-      <img src="src/perplexity-1.svg" alt="Perplexity">
-      <img src="src/hubspot-1.svg" alt="Hubspot">
-      <img src="src/lovable-1.svg" alt="Lovable">
-      <img src="src/x.svg" alt="X">
-      <img src="src/paypal.svg" alt="PayPal">
-    </div>
-  </section>
 
-  <section class="bento-section">
-    <div class="bento-container">
-      
-      <div class="bento-row">
-        <div class="bento-card">
-          <div class="bento-text">
-            <span class="bento-label">LLMs.txt & MCP</span>
-            <h3>Built for both people and AI</h3>
-            <p>Ensure your product shows up in the AI workflows users already rely on. We support llms.txt, MCP, and whatever comes next.</p>
-          </div>
-          <div class="bento-media">
-            <video class="bento-video" src="src/video1.mp4" muted autoplay loop playsinline></video>
-          </div>
+  </section>
+  <section class="features">
+           
+
+  <div class="feature-logo">
+    <img class="grid-1 grid"  src="src/anthropic-1.svg" alt="">
+    <img class="grid-2 grid" src="src/coinbase-1.svg" alt="">
+    <img class="grid-3 grid" src="src/microsoft.svg" alt="">
+    <img class="grid-4 grid" src="src/perplexity-1.svg" alt="">
+    <img class="grid-5 grid" src="src/hubspot-1.svg" alt="">
+    <img class="grid-6 grid" src="src/lovable-1.svg" alt="">
+    <img class="grid-7 grid" src="src/x.svg" alt="">
+    <img class="grid-8 grid" src="src/paypal.svg" alt="">
+  </div>
+
+
+  </section>
+ <section class="bento-section">
+  <div class="bento-container">
+    
+    <div class="bento-row">
+      <div class="bento-card">
+        <div class="bento-text">
+          <span class="bento-label">LLMs.txt & MCP</span>
+          <h3>Built for both people and AI</h3>
+          <p>Ensure your product shows up in the AI workflows users already rely on. We support llms.txt, MCP, and whatever comes next.</p>
         </div>
-
-        <div class="bento-card">
-          <div class="bento-text">
-            <span class="bento-label">Agent</span>
-            <h3>Self-updating knowledge management</h3>
-            <p>Draft, edit, and maintain content with a context-aware agent. Move faster and more consistently without the documentation debt.</p>
-          </div>
-          <div class="bento-media">
-            <video class="bento-video" src="src/video2.mp4" muted autoplay loop playsinline></video>
-          </div>
+        <div class="bento-media">
+          <video class="bento-video" src="src/video1.mp4" muted autoplay loop playsinline></video>
         </div>
       </div>
 
       <div class="bento-card">
-        <div class="bento-text" style="text-align: center; max-width: 600px; margin: 0 auto 32px auto;">
-          <span class="bento-label">Assistant</span>
-          <h3>Intelligent assistance for your users</h3>
-          <p>Turn every documentation visit into a guided conversation. Your AI assistant understands context and delivers what users need.</p>
+        <div class="bento-text">
+          <span class="bento-label">Agent</span>
+          <h3>Self-updating knowledge management</h3>
+          <p>Draft, edit, and maintain content with a context-aware agent. Move faster and more consistently without the documentation debt.</p>
         </div>
-        <div class="bento-media" style="padding: 0;">
-          <video class="bento-video-full" src="src/video3.mp4" muted autoplay loop playsinline></video>
+        <div class="bento-media">
+          <video class="bento-video" src="src/video2.mp4" muted autoplay loop playsinline></video>
         </div>
       </div>
-
     </div>
-  </section>
+
+    <div class="bento-card">
+      <div class="bento-text centered">
+        <span class="bento-label">Assistant</span>
+        <h3>Intelligent assistance for your users</h3>
+        <p>Turn every documentation visit into a guided conversation. Your AI assistant understands context and delivers what users need.</p>
+      </div>
+      <div class="bento-media" style="padding: 0; background: transparent;">
+        <video class="bento-video-full" src="src/video3.mp4" muted autoplay loop playsinline></video>
+      </div>
+    </div>
+
+  </div>
+</section>
+   
 
 </body>
 </html>
