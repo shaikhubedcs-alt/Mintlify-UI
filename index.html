@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mintlify Clone</title>
+  
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary-mint: #00ff94;
+      --primary-black: #0f172a;
+      --border-light: #e2e8f0;
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   
+      background: transparent;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      z-index: 1000;
+    }
+
+    .nav-logo img { height: 28px; }
+
+    .nav-links ul {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-main); }
+
+    .nav-buttons { display: flex; gap: 12px; }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-main);
+      background-color: #fff;
+      color:black
+
+    }
+
+    .btn-ghost {
+      background: transparent;
+      ;
+      border: none;
+      border: 1px solid white;
+      color: white;
+    }
+    .btn-ghost:hover { background-color: #f1f5f9; }
+
+    .btn-primary {
+      background-color: white;
+      color:black;
+      border: 1px solid black;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+   
+    .hero {
+      position: relative;
+      width: 100%;
+      
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 180px; 
+      overflow: hidden; 
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      width: 100%;
+      padding: 0 24px;
+    }
+
+   
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--border-light);
+      padding: 4px 12px 4px 5px;
+      border-radius: 99px;
+      font-size: 13px;
+      margin-bottom: 24px;
+      transition: all 0.2s;
+      
+    }
+
+    .hero-link:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+      border-color: #cbd5e1;
+    }
+
+    .hero-link-new {
+      background-color: var(--primary-mint);
+      color: black;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      line-height: 1.2;
+    }
+
+    .hero-link-content { color: white; font-weight: 500; margin: 0; }
+    .hero-arrow-link { width: 12px; height: 12px; opacity: 0.6; }
+
+    
+    .hero h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: white;
+      margin: 0 0 24px 0;
+      max-width: 900px;
+    }
+
+    .hero-subtext {
+      font-size: 20px;
+      line-height: 1.6;
+      color: white;
+      max-width: 550px;
+      margin: 0 0 40px 0;
+    }
+
+    /* Email Form */
+    .hero-form {
+      display: flex;
+      padding: 4px;
+      border: 1px solid var(--border-light);
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 80px;
+    }
+
+    .email-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 16px;
+      outline: none;
+      font-size: 15px;
+      font-family: var(--font-main);
+      color: var(--text-main);
+    }
+
+    .form-btn {
+      background-color: white;
+      color:var(--primary-black);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 14px;
+      font-family: var(--font-main);
+      cursor: pointer;
+    }
+
+    
+    .hero-browser-container {
+      width: 100%;
+      max-width: 1080px; 
+      
+      
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-bottom: none; 
+      border-radius: 24px 24px 0 0; 
+      
+     
+      box-shadow: 0 -20px 40px -20px rgba(0,0,0,0.05);
+      
+      
+      overflow: hidden; 
+      display: flex;    
+    }
+
+    .hero-browser-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding-top: 140px; }
+      .hero h1 { font-size: 40px; }
+      .nav-links, .nav-buttons-white { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <a href="#"><img src="src/svgexport-12.svg" alt="Mintlify"></a>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-ghost">Contact Sales</button>
+      <button class="btn btn-primary">Start for free</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <img src="src/bg-light (1).svg" alt="" class="hero-bg">
+    
+    <div class="hero-content">
+      <a href="#" class="hero-link">
+        <span class="hero-link-new">New</span>
+        <p class="hero-link-content">Self-updating docs with agent suggestions</p>
+        <img class="hero-arrow-link" src="src/hero-link-arrow.svg" alt="">
+      </a>
+
+      <h1>The Intelligent Knowledge Platform</h1>
+
+      <p class="hero-subtext">
+        Helping teams create and maintain world-class documentation built for both humans and AI
+      </p>
+
+      <form class="hero-form">
+        <input type="email" class="email-input" placeholder="Email address">
+        <button class="form-btn">Start now</button>
+      </form>
+    </div>
+
+    <div class="hero-browser-container">
+      <img src="src/hero-image-light.svg" alt="Platform Dashboard" class="hero-browser-img">
+    </div>
+
+
+  </section>
+  <section class="features">
+   
+
+</body>
+</html>
