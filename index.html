@@ -375,6 +375,28 @@
       .nav-links, .nav-buttons-white { display: none; }
     }
 
+.story-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px;
+}
+.story-board img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 24px;
+  z-index: -1;
+}
+.inline-logos {
+  display: flex;
+  gap: 120px;
+  margin-top: 40px;
+}
+.story-content {
+  overflow: hidden;
+  color: black;
+  z-index: 2;}
     
   </style>
 </head>
@@ -481,7 +503,26 @@
       </div>
     </div>
 
+
   </div>
+</section>
+<section class="story-section">
+  <div class="story-board">
+        <img src="src/Anthropic background.svg" alt="">
+       <p class="story-content ">Customer Story</p>
+        <h3 class="story-content">See how Anthropic accelerates AI development with Mintlify</h3>
+        <p class="story-content">Read story</p>
+
+  </div>
+  <div class="inline-logos">
+    <img src="src/anthropic.svg" alt="">
+    <img src="src/coinbase.svg" alt="">
+    <img src="src/hubspot.svg" alt="">
+    <img src="src/zapier.svg" alt="">
+    <img src="src/at&t.svg" alt="">
+    
+  </div>
+
 </section>
    
 
