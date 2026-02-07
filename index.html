@@ -169,6 +169,7 @@
       letter-spacing: -0.02em;
       color: white;
       margin: 0 0 24px 0;
+      width: 500px;
       max-width: 900px;
     }
 
@@ -180,7 +181,7 @@
       margin: 0 0 40px 0;
     }
 
-    /* Email Form */
+    
     .hero-form {
       display: flex;
       padding: 4px;
@@ -264,7 +265,7 @@
 
   }
 
-/* --- Bento Grid Section --- */
+
 .bento-section {
   padding: 80px 24px;
   display: flex;
@@ -280,7 +281,7 @@
   gap: 24px;
 }
 
-/* Top row with 2 columns */
+
 .bento-row {
   display: flex;
   gap: 24px;
@@ -294,10 +295,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex: 1; /* Makes cards even width in the row */
+  flex: 1; 
 }
 
-/* Text styling inside cards */
+
 .bento-text {
   padding: 32px 32px 0 32px;
   margin-bottom: 24px;
@@ -375,28 +376,163 @@
       .nav-links, .nav-buttons-white { display: none; }
     }
 
-.story-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 24px;
-}
-.story-board img {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  border-radius: 24px;
-  z-index: -1;
-}
-.inline-logos {
-  display: flex;
-  gap: 120px;
-  margin-top: 40px;
-}
-.story-content {
-  overflow: hidden;
-  color: black;
-  z-index: 2;}
+
+    .story-section {
+      padding: 100px 24px;
+      background-color: var(--bg-page);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .story-board {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 500px;
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 64px;
+      color: white;
+      background-color: #0f172a; 
+    }
+
+    .story-bg-img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .story-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .story-title {
+      font-size: 40px;
+      font-weight: 600;
+      max-width: 600px;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    .story-link {
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .inline-logos {
+      margin-top: 48px;
+      display: flex;
+      gap: 48px;
+      opacity: 0.5;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .inline-logos img { height: 24px; }
+
+    
+    .cta-section {
+      padding: 120px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background-color: var(--bg-page);
+    }
+
+    .cta-title {
+      font-size: 40px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-subtext {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    .cta-buttons { display: flex; gap: 12px; }
+
+    
+    .footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-light);
+      padding: 80px 24px 32px 24px;
+    }
+
+    .footer-container { max-width: 1200px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .footer-column h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .footer-column ul { display: flex; flex-direction: column; gap: 12px; }
+
+    .footer-column a {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .footer-column a:hover { color: var(--text-main); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .footer-copyright { font-size: 13px; color: var(--text-muted); }
+
+    @media (max-width: 1024px) {
+      .bento-row { flex-direction: column; }
+      .feature-logo { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .nav-links, .nav-buttons { display: none; }
+      .footer-bottom { flex-direction: column; gap: 24px; }
+    }
     
   </style>
 </head>
@@ -507,23 +643,84 @@
   </div>
 </section>
 <section class="story-section">
-  <div class="story-board">
-        <img src="src/Anthropic background.svg" alt="">
-       <p class="story-content ">Customer Story</p>
-        <h3 class="story-content">See how Anthropic accelerates AI development with Mintlify</h3>
-        <p class="story-content">Read story</p>
-
-  </div>
-  <div class="inline-logos">
-    <img src="src/anthropic.svg" alt="">
-    <img src="src/coinbase.svg" alt="">
-    <img src="src/hubspot.svg" alt="">
-    <img src="src/zapier.svg" alt="">
-    <img src="src/at&t.svg" alt="">
+    <div class="story-board">
+      <img src="src/Anthropic background.svg" alt="" class="story-bg-img">
+      <div class="story-content">
+        <span class="story-label">Customer Story</span>
+        <h3 class="story-title">See how Anthropic accelerates AI development with Mintlify</h3>
+        <div class="story-link">Read story <img src="src/hero-link-arrow.svg" style="width: 10px; filter: invert(1);"></div>
+      </div>
+    </div>
     
-  </div>
+    <div class="inline-logos">
+      <img src="src/anthropic-1.svg" alt="">
+      <img src="src/coinbase-1.svg" alt="">
+      <img src="src/hubspot-1.svg" alt="">
+      <img src="src/x.svg" alt="">
+      <img src="src/paypal.svg" alt="">
+    </div>
+  </section>
 
-</section>
+  <section class="cta-section">
+    <h2 class="cta-title">Make documentation your winning advantage</h2>
+    <p class="cta-subtext">Join the leaders of tomorrow to future proof your documentation today.</p>
+    <div class="cta-buttons">
+      <button class="form-btn">Get started for free</button>
+      <button class="nav-buttons-white" style="padding: 8px 20px;">Contact sales</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#">Startups</a></li>
+            <li><a href="#">Enterprise</a></li>
+            <li><a href="#">Switch</a></li>
+            <li><a href="#">OSS Program</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Guides</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Documentation</h4>
+          <ul>
+            <li><a href="#">Getting Started</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Components</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Wall of Love</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="nav-logo"><img src="src/svgexport-12.svg" alt="Mintlify"></div>
+        <div class="footer-copyright">© 2026 Mintlify, Inc.</div>
+      </div>
+    </div>
+  </footer>
    
 
 </body>
